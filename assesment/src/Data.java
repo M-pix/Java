@@ -1,9 +1,10 @@
 import java.util.*;
 import java.io.*;
 public class Data {
-    private HashMap<String, List<String>> map = new HashMap<>();
+    private HashMap<String, List<String>> map;
 
     public Data() {
+        map = new HashMap<>();
         map.put("strings", new ArrayList<>());
         map.put("integers", new ArrayList<>());
         map.put("floats", new ArrayList<>());

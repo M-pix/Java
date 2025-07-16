@@ -1,9 +1,9 @@
 public class Statistic {
 
     public void BriefStatistic() {
-        System.out.println("Amount of str: " + amountLine_[0]);
-        System.out.println("Amount of int: " + amountLine_[1]);
-        System.out.println("Amount of float: " + amountLine_[2]);
+        System.out.println("Amount of int: " + amountLine_[0]);
+        System.out.println("Amount of float: " + amountLine_[1]);
+        System.out.println("Amount of str: " + amountLine_[2]);
     }
 
     public void FullStatistic() {
@@ -18,9 +18,9 @@ public class Statistic {
         System.out.println("min str: " +  statisticStr_ [0]);
         System.out.println("max str: " +  statisticStr_ [1]);
     }
-    public int[] statisticInt_ = {10000000, 0, 0};
-    public float[] statisticFloat_ = {10000000, 0, 0};
-    public int[] statisticStr_ = {10000000, 0};
+    public int[] statisticInt_ = {0, 0, 0};
+    public float[] statisticFloat_ = {0, 0, 0};
+    public int[] statisticStr_ = {0, 0};
     public int[] amountLine_ = {0, 0, 0};
     
     public double average_[] = {0,0};

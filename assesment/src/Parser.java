@@ -65,6 +65,10 @@ public class Parser {
             }
             if (isInteger(line)) {
                 stat.amountLine_[0]++;
+                if (map.get("integers").isEmpty()) {
+                    stat.statisticInt_[0]=Integer.parseInt(line);
+                    stat.statisticInt_[1]=Integer.parseInt(line);
+                }
                 map.get("integers").add(line);
                 if (stat.statisticInt_[0]>Integer.parseInt(line)){
                     stat.statisticInt_[0]=Integer.parseInt(line);
@@ -81,6 +85,10 @@ public class Parser {
                 stat.average_[0] = result.floatValue();
             } else if (isFloat(line)) {
                 stat.amountLine_[1]++;
+                if (map.get("floats").isEmpty()) {
+                    stat.statisticFloat_[0]=Float.parseFloat(line);
+                    stat.statisticFloat_[1]=Float.parseFloat(line);
+                }
                 map.get("floats").add(line);
                 if (stat.statisticFloat_[0]>Float.parseFloat(line)){
                     stat.statisticFloat_[0]=Float.parseFloat(line);
