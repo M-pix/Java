@@ -4,6 +4,8 @@ import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Parser {
     public static void allWriter(Data map, TypeCommand command) throws IOException {
@@ -13,13 +15,22 @@ public class Parser {
             Files.createDirectories(directoryPath);
         }
         File file;
-        String []typeFile = {"strings","integers","floats"};
-        for (int i = 0; i < 3; ++i) {
+        List<String> typeFile = new ArrayList<>();
+        if (!map.get("strings").isEmpty()){
+            typeFile.add("strings");
+        }
+        if (!map.get("floats").isEmpty()){
+            typeFile.add("floats");
+        }
+        if (!map.get("integers").isEmpty()){
+            typeFile.add("integers");
+        }
+        for (int i = 0; i < typeFile.size(); ++i) {
             if(command.path == null){
-                file = new File(command.prefix != null ? command.prefix + typeFile[i] + ".txt" : "sample-" + typeFile[i] + ".txt");
+                file = new File(command.prefix != null ? command.prefix + typeFile.get(i) + ".txt" : "sample-" + typeFile.get(i) + ".txt");
             }
             else {
-                file = new File(directoryPath.toFile(), command.prefix != null ? command.prefix + typeFile[i] + ".txt" : "sample-" + typeFile[i] + ".txt");
+                file = new File(directoryPath.toFile(), command.prefix != null ? command.prefix + typeFile.get(i) + ".txt" : "sample-" + typeFile.get(i) + ".txt");
             }
             boolean appendMode = command.a && file.exists();
             if (!appendMode && file.exists()) {
