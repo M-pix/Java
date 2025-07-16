@@ -1,6 +1,4 @@
 import java.io.*;
-import java.util.HashMap;
-import java.util.List;
 import java.io.IOException;
 
 public class Main {
@@ -10,7 +8,7 @@ public class Main {
             return;
         }
         Statistic stat = new Statistic();
-        HashMap<String, List<String>> map;
+        Data map;
         try {
             TypeCommand command = CommandParser.scannerLine(args);
             for (String fileName : command.pathFile) {

@@ -4,12 +4,9 @@ import java.math.RoundingMode;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 public class Parser {
-    public static void allWriter(HashMap<String, List<String>>map, TypeCommand command) throws IOException {
+    public static void allWriter(Data map, TypeCommand command) throws IOException {
         String path = command.path != null ? command.path : "";
         Path directoryPath = Paths.get(path);
         if (!Files.exists(directoryPath)) {
@@ -31,16 +28,7 @@ public class Parser {
                 }
             }
         }
-        map.forEach((key, value) -> {
-            for (String elem: value) {
-                try {
-                    Parser.write(key, elem, command);
-                }
-                catch (IOException exception) {
-                    System.out.println("Warning write file: " + exception.getMessage());
-                }
-            }
-        });
+        map.processData(command);
     }
     public static void write(String typeFile, String line,TypeCommand command) throws IOException {
         String path = command.path != null ? command.path : "";
@@ -57,11 +45,8 @@ public class Parser {
         }
     }
 
-    public static HashMap<String, List<String>> read(BufferedReader reader, Statistic stat) throws IOException {
-        HashMap<String, List<String>> map = new HashMap<>();
-        map.put("strings", new ArrayList<>());
-        map.put("integers", new ArrayList<>());
-        map.put("floats", new ArrayList<>());
+    public static Data read(BufferedReader reader, Statistic stat) throws IOException {
+        Data map = new Data();
         String line;
         while ((line = reader.readLine()) != null) {
             if (line.isEmpty()) {
